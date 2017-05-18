@@ -4,7 +4,7 @@ import { HttpModule } from '@angular/http';
 
 // Imports for loading & configuring the in-memory web api
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { ProductData } from './products/product-data';
+import { EmployeeData } from './employees/employee-data';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,7 +19,7 @@ import { MessageModule } from './messages/message.module';
   imports: [
     BrowserModule,
     HttpModule,
-    InMemoryWebApiModule.forRoot(ProductData, { delay: 1000 }),
+    InMemoryWebApiModule.forRoot(EmployeeData, { delay: 1000 }),
     UserModule,
     MessageModule,
     AppRoutingModule
