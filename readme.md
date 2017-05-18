@@ -1,8 +1,7 @@
 
 ## Description
 
-CSS Additions
- - Addition of css styles and themes
+ - CSS Additions - Addition of css styles and themes
 Angular 2 Concepts
  - Basic Concepts 
 Advanced Concepts: 
