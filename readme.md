@@ -1,7 +1,11 @@
 
 ## Description
 
-The routing in this reference application demonstrates: 
+CSS Additions
+ - Addition of css styles and themes
+Angular 2 Concepts
+ - Basic Concepts 
+Advanced Concepts: 
  - Routing Basics
  - Routing to Features
  - Route Parameters
