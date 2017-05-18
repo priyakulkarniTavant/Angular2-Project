@@ -1,11 +1,9 @@
 
 ## Description
 
- - CSS Additions - Addition of css styles and themes
-Angular 2 Concepts
- - Basic Concepts 
-Advanced Concepts: 
- - Routing Basics
+ - CSS Additions - Addition of css styles and themes 
+ - Angular 2 Basic Concepts 
+ - Advanced Concepts like Routing Basics
  - Routing to Features
  - Route Parameters
  - Prefetching Data using Route Resolvers
