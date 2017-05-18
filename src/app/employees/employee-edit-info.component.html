@@ -1,0 +1,78 @@
+<div class="panel-body">
+    <form class="form-horizontal"
+          novalidate
+          #employeeForm="ngForm">
+        <fieldset>
+            <legend>Basic Employee Information</legend>
+            <div class="form-group" 
+                    [ngClass]="{'has-error': (employeeNameVar.touched || 
+                                              employeeNameVar.dirty || employee.id !== 0) && 
+                                              !employeeNameVar.valid }">
+                <label class="col-md-2 control-label" 
+                        for="employeeNameId">Employee Name</label>
+
+                <div class="col-md-8">
+                    <input class="form-control" 
+                            id="employeeNameId" 
+                            type="text" 
+                            placeholder="Name (required)"
+                            required
+                            minlength="3"
+                            [(ngModel)] = employee.employeeName
+                            name="employeeName"
+                            #employeeNameVar="ngModel" />
+                    <span class="help-block" *ngIf="(employeeNameVar.touched ||
+                                                     employeeNameVar.dirty || employee.id !== 0) &&
+                                                     employeeNameVar.errors">
+                        <span *ngIf="employeeNameVar.errors.required">
+                            Employee name is required.
+                        </span>
+                        <span *ngIf="employeeNameVar.errors.minlength">
+                            Employee name must be at least three characters.
+                        </span>
+                    </span>
+                </div>
+            </div>
+            
+            <div class="form-group" 
+                    [ngClass]="{'has-error': (employeeCodeVar.touched || 
+                                              employeeCodeVar.dirty || employee.id !== 0) && 
+                                              !employeeCodeVar.valid }">
+                <label class="col-md-2 control-label" for="employeeCodeId">Employee Code</label>
+
+                <div class="col-md-8">
+                    <input class="form-control" 
+                            id="employeeCodeId" 
+                            type="text" 
+                            placeholder="Code (required)"
+                            required
+                            [(ngModel)] = employee.employeeCode
+                            name="employeeCode"
+                            #employeeCodeVar="ngModel" />
+                    <span class="help-block" *ngIf="(employeeCodeVar.touched ||
+                                                     employeeCodeVar.dirty || employee.id !== 0) &&
+                                                     employeeCodeVar.errors">
+                        <span *ngIf="employeeCodeVar.errors.required">
+                            Employee code is required.
+                        </span>
+                    </span>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="descriptionId">Description</label>
+
+                <div class="col-md-8">
+                    <textarea class="form-control" 
+                            id="descriptionId" 
+                            placeholder="Description"
+                            rows=3
+                            [(ngModel)] = employee.description
+                            name="description"></textarea>
+                </div>
+            </div>
+
+            <div class="has-error" *ngIf="errorMessage">{{errorMessage}}</div>
+        </fieldset>
+    </form>
+</div>

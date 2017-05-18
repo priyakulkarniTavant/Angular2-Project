@@ -1,0 +1,73 @@
+<div class="panel panel-primary" *ngIf="employee">
+    <div class="panel-heading" style="font-size:large">
+        {{pageTitle + ": " + employee.employeeName}}
+    </div>
+
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-3">Name:</div>
+                    <div class="col-md-6">{{employee.employeeName}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">Code:</div>
+                    <div class="col-md-6">{{employee.employeeCode}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">Age:</div>
+                    <div class="col-md-6">{{employee.description}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">Joined On:</div>
+                    <div class="col-md-6">{{employee.joinedOn}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">Salary:</div>
+                    <div class="col-md-6">{{employee.salary|currency:"USD":true}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">Performance:</div>
+                    <div class="col-md-6">
+                        <ai-star [rating]="employee.performance">
+                        </ai-star>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">Department:</div>
+                    <div class="col-md-6">{{employee.department}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">Tags:</div>
+                    <div class="col-md-6">{{employee.tags}}</div>
+                </div>
+            </div>
+
+            <div class="col-md-6" *ngIf="employee.imageUrl">
+                <img class="center-block img-responsive" 
+                     [style.width.px]="200" 
+                     [style.margin.px]="2" 
+                     [src]="employee.imageUrl"
+                     [title]="employee.employeeName">
+            </div>
+        </div>
+        <div class="has-error" *ngIf="errorMessage">{{errorMessage}}</div>
+    </div>
+
+    <div class="panel-footer">
+        <!--<a class="btn btn-default"
+           [routerLink]="['/employees']"
+           [preserveQueryParams]="true">
+            <i class="glyphicon glyphicon-chevron-left"></i> Back
+        </a>-->
+        <a class="btn btn-default"
+           [routerLink]="['/employees']"
+           queryParamsHandling="preserve">
+            <i class="glyphicon glyphicon-chevron-left"></i> Back
+        </a>
+        <a class="btn btn-primary" style="width:80px;margin-left:10px" 
+           [routerLink]="['edit']">
+            Edit
+        </a>
+    </div>
+</div>

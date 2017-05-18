@@ -1,0 +1,72 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        {{pageTitle}}
+    </div>
+
+    <!-- Filter the Employees   -->
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-2">Filter by:</div>
+            <div class="col-md-4">
+                <input type="text" [(ngModel)]="listFilter" />
+            </div>
+        </div>
+        <div class="row" *ngIf="listFilter">
+            <div class="col-md-6">
+                <h3>Filtered by: {{listFilter}} </h3>
+            </div>
+        </div>
+
+        <div class="has-error" *ngIf="errorMessage">{{errorMessage}}</div>
+
+        <div class="table-responsive">
+            <table class="table"
+                   *ngIf="employees && employees.length">
+                <thead>
+                    <tr>
+                        <th>
+                            <button class="btn btn-primary"
+                                (click)="toggleImage()">
+                                {{showImage ? "Hide" : "Show"}} Image
+                            </button>
+                        </th>
+                        <th>Employee</th>
+                        <th>Code</th>
+                        <th>Joined On</th>
+                        <th>Salary</th>
+                        <th>Performance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let employee of employees | employeeFilter:listFilter">
+                        <td>
+                            <img *ngIf="showImage && employee.imageUrl"
+                                 [src]="employee.imageUrl"
+                                 [title]="employee.employeeName | uppercase"
+                                 [style.width.px]="imageWidth" 
+                                 [style.margin.px]="imageMargin">
+                        </td>
+                        <td><a [routerLink]="[employee.id]" 
+                               [queryParams]="{filterBy: listFilter, showImage: showImage}">
+                            {{employee.employeeName}}
+                            </a>
+                        </td>
+                        <td>{{ employee.employeeCode | uppercase }}</td>
+                        <td>{{ employee.joinedOn }}</td>
+                        <td>{{ employee.salary | currency:"USD":true:"1.2-2" }}</td>
+                        <td>
+                            <ai-star [rating]="employee.performance">
+                            </ai-star>
+                       </td>
+                       <td>
+                            <a class="btn btn-primary" 
+                               [routerLink]="[employee.id, 'edit']">
+                                Edit
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
